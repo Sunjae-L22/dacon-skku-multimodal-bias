@@ -1,0 +1,25 @@
+# 로컬 M4 / Apple Silicon 개발용 (빠른 프롬프트 반복). CUDA·bitsandbytes 미사용.
+# ※ Apple Silicon(M1~M4) 전용. 인텔 맥/리눅스 불가. 최종 제출은 requirements-a6000.txt.
+#
+# ★★ 반드시 전용 venv 에 설치할 것 (공유 conda base 에 깔지 말 것) ★★
+#    mlx-vlm(현행 0.6.2)은 transformers 5.x 를 끌어와서, 다른 프로젝트가 쓰는
+#    base env(transformers<5, numpy<2 의존 패키지들)를 깨뜨린다. 격리가 정답:
+#
+#    cd pipeline
+#    python3 -m venv .venv
+#    .venv/bin/python -m pip install -r requirements-mac.txt
+#    .venv/bin/python eval/run_eval.py --backend mlx --set smoke --limit 40
+#
+# 검증된 조합(2026-06-06, M4 24GB): mlx-vlm 0.6.2 · transformers 5.10.2 ·
+#   numpy 2.4.6 · pandas 3.0.3 → Qwen3-VL-8B-Instruct-4bit 정상 추론(~6s/샘플).
+#   (예전 0.3.x 의 rope_theta 에러는 0.6.2 에서 해소. git 최신도 동일 버전.)
+
+mlx>=0.20
+mlx-vlm>=0.6.2            # PyPI 0.6.2 동작 확인. 더 최신이 필요하면 아래 git:
+# "mlx-vlm @ git+https://github.com/Blaizzy/mlx-vlm.git"
+# transformers 는 mlx-vlm 이 5.x 를 끌어옴(핀하지 않음 — 충돌 방지).
+pandas>=2.0
+numpy>=2.0               # venv 한정. mlx-vlm→opencv 가 numpy>=2 요구(base 의 <2 와 무관).
+tqdm>=4.66
+pillow>=10.0,<12
+pyyaml>=6.0

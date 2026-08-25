@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-eval.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements-eval.txt
+
+      - name: Unit & integration tests
+        run: pytest tests/ -q
+
+      - name: Mock end-to-end (baseline must be exactly 0.5000)
+        run: |
+          python eval/run_eval.py --backend mock:always_unknown --set smoke | tee eval.log
+          grep -q "Balanced Accuracy : 0.5000" eval.log
+
+  docker:
+    name: docker build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t skku-bias .
+      - name: Run default command in container
+        run: docker run --rm skku-bias

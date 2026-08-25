@@ -1,0 +1,38 @@
+{
+  "run_config": {
+    "backend": "mlx",
+    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
+    "prompt_version": "v2",
+    "use_image": false,
+    "max_new_tokens": 256,
+    "do_sample": false,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "seed": 1234,
+    "batch_mode": false
+  },
+  "env": {
+    "python": "3.12.10",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "torch": null,
+    "transformers": "5.10.2",
+    "vllm": null,
+    "mlx_vlm": "0.6.2",
+    "pandas": "3.0.3",
+    "data_dir": "<SKKU_DATA_DIR>/open"
+  },
+  "n_samples": 8500,
+  "elapsed_sec": 11928.1,
+  "sec_per_sample": 1.4033,
+  "parse_ok_rate": 0.9989411764705882,
+  "n_unparsed": 9,
+  "label_dist": {
+    "0": 2878,
+    "1": 2787,
+    "2": 2835
+  },
+  "matches_sample_submission": true,
+  "chunked": true,
+  "chunk_size": 100
+}

@@ -1,0 +1,25 @@
+# 기본 실행 설정 (RunConfig 와 1:1). 진입 스크립트 CLI 플래그가 우선한다.
+# 이 파일은 "최종 제출 권장값"을 한곳에 문서화하는 용도다.
+
+# --- 최종 제출(A6000) 권장 ---
+backend: "vllm:Qwen/Qwen3-VL-8B-Instruct"   # 2025-10-15 공개, Apache-2.0
+prompt_version: "v2"                          # 과소기권 교정(채택)
+use_image: false                              # 텍스트 전용(이미지 0/30 기여 → 미사용)
+max_new_tokens: 256
+do_sample: false                              # greedy = 재현성
+temperature: 0.0
+top_p: 1.0
+seed: 1234
+
+# --- vLLM 엔진(0.5s/샘플 충족 파라미터) ---
+vllm:
+  dtype: "bfloat16"
+  gpu_memory_utilization: 0.90
+  max_model_len: 4096        # context 중앙값 ~27단어 → 4096 충분, KV캐시 여유로 throughput↑
+  max_num_seqs: 256
+  tensor_parallel_size: 1    # 단일 A6000
+
+# --- 로컬 개발(M4) ---
+local_mlx:
+  backend: "mlx:mlx-community/Qwen3-VL-8B-Instruct-4bit"
+  note: "단건 ~5s/샘플. 프롬프트 캘리브레이션 반복용. 최종 속도는 vLLM 으로 별도 충족."

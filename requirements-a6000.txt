@@ -1,0 +1,17 @@
+# 최종 채점 타깃: RTX A6000 48GB · Python 3.10 · CUDA 12.4 · PyTorch 2.6.0 · Ubuntu 20.04
+# (대회 기준 평가 환경. 이 조합으로 0.5s/샘플 + 재현성 충족.)
+torch==2.6.0
+transformers>=4.57,<5      # Qwen3-VL 지원(4.57.x 검증). 5.x 는 API 드리프트로 회피
+vllm>=0.7                  # 연속배치 → 0.5s/샘플(최종 제출 권장 경로)
+accelerate>=1.0
+pillow>=10.0,<12           # _Ink 변경 회피
+sentencepiece
+pandas>=2.0
+numpy>=1.24
+pyyaml>=6.0
+tqdm>=4.66
+
+# --- 선택: LoRA 파인튜닝 트랙(train/) ---
+# peft>=0.13
+# datasets>=2.19
+# bitsandbytes             # 4bit 로드(메모리 부족 GPU)

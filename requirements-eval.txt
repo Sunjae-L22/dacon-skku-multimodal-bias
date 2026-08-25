@@ -1,0 +1,8 @@
+# 분석/검증/배관 (GPU 불필요 — Mac/리눅스 어디서나).
+# Mock 백엔드로 전체 파이프라인(추론→제출→검증→오류분석)을 GPU 없이 돌릴 수 있다.
+pandas>=2.0
+numpy>=1.24
+pillow>=10.0,<12      # Pillow 12 의 _Ink 변경 회피
+pyyaml>=6.0
+tqdm>=4.66
+pytest>=7.4

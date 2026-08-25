@@ -1,0 +1,19 @@
+# 집 RTX 3060 Ti (8GB, Windows) — transformers + bitsandbytes 4bit 배치 추론.
+# 목적: 8B v3b 테스트 풀런(8500)을 M4(24~56h) 대신 ~2-4h 에. + A6000 채점환경과
+#       같은 CUDA/Ampere(sm86) 경로라 재현성(룰⑦) 확보.
+#
+# torch 는 CUDA 휠을 별도 인덱스에서 설치(아래 한 줄 먼저):
+#   pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+#   (PyTorch 2.6 / CUDA 12.4 = 운영진 채점환경과 일치)
+# 그 다음 이 파일:
+#   pip install -r requirements-win-3060ti.txt
+
+transformers>=4.57,<5        # Qwen3-VL 지원. ★git-source 금지(채점환경 재현 위해 안정 릴리스만)
+accelerate>=1.0
+bitsandbytes>=0.43           # Windows 4bit(nf4) 지원. 8GB 에 8B 적재
+qwen-vl-utils
+pillow>=10.0,<12
+sentencepiece
+pandas>=2.0
+numpy>=1.24
+tqdm>=4.66

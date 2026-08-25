@@ -1,0 +1,11 @@
+.git/
+.github/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+open/
+train/data/
+train/adapters/
+outputs/chunks/
+docs/*.pdf

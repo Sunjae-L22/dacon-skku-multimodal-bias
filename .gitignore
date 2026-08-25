@@ -1,0 +1,20 @@
+# 환경
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
+
+# 대회 제공 데이터 (라이선스상 미포함)
+open/
+*.zip
+
+# 학습 산출물
+train/data/
+train/adapters/
+
+# 대용량 중간 산출물 — 제출 이력(outputs/submissions/)과 manifest 는 근거로 남깁니다
+outputs/chunks/
+outputs/*.log
