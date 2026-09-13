@@ -1,6 +1,6 @@
 # 언제 답하고, 언제 "모른다"고 할 것인가
 
-**2026 성균관대학교 멀티모달 AI Bias 챌린지 (DACON) — 최종 8위 / 263명 · 수상**
+**2026 성균관대학교 멀티모달 AI Bias 챌린지 (DACON) — 최종 8위 / 263팀 · 수상**
 
 [![Award](https://img.shields.io/badge/DACON-8th%20%2F%20263-FFB800)](docs/certificate.png)
 [![CI](https://github.com/Sunjae-L22/dacon-skku-multimodal-bias/actions/workflows/ci.yml/badge.svg)](https://github.com/Sunjae-L22/dacon-skku-multimodal-bias/actions/workflows/ci.yml)
@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 편향 벤치마크 QA에서 **모델을 학습시키지 않고 프롬프트만으로** 판단 기준을 교정해
-Private Balanced Accuracy **0.9075**, 최종 **8위 / 263명**을 기록한 추론 파이프라인입니다.
+Private Balanced Accuracy **0.9075**, 최종 **8위 / 263팀**을 기록한 추론 파이프라인입니다.
 
 > 🏅 [DACON Certificate of Excellence](docs/certificate.png) · 인증코드 `#D20260729000009` · 상금 30만원
 > 📄 [2차 평가 발표자료 (14p)](docs/presentation-2026-skku-challenge.pdf) · [제출 이력](outputs/submissions/SUBMISSIONS.md) · [기술 문서](docs/PIPELINE.md)
@@ -40,7 +40,7 @@ BBQ(Bias Benchmark for QA)를 멀티모달로 확장한 3지선다 과제입니�
 | **06-14** | **Qwen3-VL-32B (AWQ-4bit, vLLM)** · v3b · greedy | **0.99875** | **14** ★ 최종 채택 |
 | 06-15 | 위와 동일 모델 8bit | 0.99775 | — ❌ 미채택 |
 
-**Private (최종) Balanced Accuracy 0.9075 → 8위 / 263명**
+**Private (최종) Balanced Accuracy 0.9075 → 8위 / 263팀**
 추론 속도 **106 ms/샘플** (규칙 상한 500ms) · 파싱 성공률 ~100% · **파인튜닝 없음 (zero-shot)**
 
 오프라인 검증셋(공개 BBQ 1,988문항) 기준: v2 0.9698 → v3b·32B **0.9904**
